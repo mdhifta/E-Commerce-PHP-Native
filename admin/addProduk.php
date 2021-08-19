@@ -194,7 +194,7 @@
                             </div>
                           <?php } ?>
                         </div>
-                        <input type="file" name="gambar[]" class="form-control"id="imageupload" multiple required>
+                        <input type="file" name="gambar[]" class="form-control"id="imageupload" multiple>
                       </div>
                     </div>
                     <!-- /.card-body -->

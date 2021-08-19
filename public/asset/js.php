@@ -9,6 +9,8 @@
 <script src="../vendor/assets/js/popper.min.js"></script>
 <script src="../vendor/assets/js/lazysizes.js"></script>
 <script src="../vendor/assets/js/main.js"></script>
+<script src="asset/chat/script.js"></script>
+
 <!--For Newsletter Popup-->
 <script>
 jQuery(document).ready(function(){

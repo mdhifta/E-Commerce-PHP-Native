@@ -48,13 +48,14 @@
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-money-bill"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">CPU Traffic</span>
+                <span class="info-box-text">Pendapatan</span>
+                <?php $query = $mysqli->query("SELECT SUM(total_bayar) as total FROM tb_pembayaran WHERE status='1'"); ?>
+                <?php $totBayar = $query->fetch_object(); ?>
                 <span class="info-box-number">
-                  10
-                  <small>%</small>
+                  Rp. <?= number_format($totBayar->total); ?>;
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -64,11 +65,13 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-history"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Likes</span>
-                <span class="info-box-number">41,410</span>
+                <span class="info-box-text">History Transaksi</span>
+                <?php $query = $mysqli->query("SELECT COUNT(id_transaksi) as total FROM tb_transaksi"); ?>
+                <?php $totTransaksi = $query->fetch_object(); ?>
+                <span class="info-box-number"><?= $totTransaksi->total; ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -81,11 +84,13 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-cubes"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
-                <span class="info-box-number">760</span>
+                <?php $query = $mysqli->query("SELECT COUNT(id_produk) as total FROM tb_produk WHERE status='0'"); ?>
+                <?php $totProduk = $query->fetch_object(); ?>
+                <span class="info-box-text">Produk</span>
+                <span class="info-box-number"><?= $totProduk->total; ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -97,8 +102,10 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">New Members</span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-text">Pengguna</span>
+                <?php $query = $mysqli->query("SELECT COUNT(id_user) as total FROM tb_user WHERE roles='1'"); ?>
+                <?php $totUser = $query->fetch_object(); ?>
+                <span class="info-box-number"><?= $totUser->total; ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>

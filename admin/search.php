@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Master User</title>
+  <title>Master Produk</title>
   <?php include 'asset/css.php'; ?>
 </head>
 
@@ -28,12 +28,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Master User</h1>
+              <h1 class="m-0">Master Produk</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Master User</li>
+                <li class="breadcrumb-item active">Master Produk</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -50,7 +50,7 @@
 
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">List User</h3>
+                  <h3 class="card-title">List Produk</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -58,25 +58,32 @@
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>Nama Costumer</th>
-                        <th>Email</th>
-                        <th>Telephone</th>
-                        <th>Saldo</th>
+                        <th>Nama Produk</th>
+                        <th>Stok</th>
+                        <th>Harga Produk</th>
+                        <th>Berat</th>
+                        <th>Kategori</th>
+                        <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php $no = 0; ?>
-                      <?php $query = $mysqli->query("SELECT * FROM tb_user WHERE roles='1'"); ?>
+                      <?php $query = $mysqli->query("SELECT * FROM tb_produk as tbp JOIN tb_kategori as tbk ON tbk.id_kategori=tbp.id_kategori WHERE tbp.status='0' AND tbp.nama_produk LIKE '%$_POST[search]%'"); ?>
                       <?php while ($value = $query->fetch_object()) { ?>
                       <tr>
                         <td><?= $no+=1; ?></td>
-                        <td><?= $value->fname ?> <?= $value->lname; ?></td>
-                        <td><?= $value->email; ?></td>
-                        <td><?= $value->telephone; ?></td>
-                        <td>Rp. <?= number_format($value->saldo); ?></td>
+                        <td><?= $value->nama_produk; ?></td>
+                        <td><?= $value->stok; ?></td>
+                        <td>Rp. <?= number_format($value->harga_produk); ?>;-</td>
+                        <td><?= $value->berat_produk; ?> (gram)</td>
+                        <td><?= $value->jenis_kategori; ?></td>
+                        <td>
+                          <a href="detailProduk.php?id=<?= $value->id_produk; ?>" class="btn btn-info">Detail</a>
+                          <a href="addProduk.php?id=<?= $value->id_produk; ?>" class="btn btn-primary">Edit</a>
+                          <a href="backend/produk/deleteProduk.php?id=<?= $value->id_produk; ?>" class="btn btn-danger">Hapus</a>
+                        </td>
                       </tr>
                     <?php } ?>
-                    </tbody>
                   </table>
                 </div>
                 <!-- /.card-body -->

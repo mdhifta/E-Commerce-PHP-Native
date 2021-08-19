@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Master Voucher</title>
+  <title>Master Diskon</title>
   <?php include 'asset/css.php'; ?>
 </head>
 
@@ -28,12 +28,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Master Voucher</h1>
+              <h1 class="m-0">Master Diskon</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Master Voucher</li>
+                <li class="breadcrumb-item active">Master Diskon</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -52,45 +52,33 @@
               <!-- general form elements -->
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Voucher Form</h3>
+                  <h3 class="card-title">Diskon Form</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <?php if (isset($_GET['id'])): ?>
                   <?php
-                  $query = $mysqli->query("SELECT * FROM tb_kupon WHERE id_kupon='$_GET[id]'");
+                  $query = $mysqli->query("SELECT * FROM tb_diskon WHERE id_diskon='$_GET[id]'");
                   $value = $query->fetch_object();
                   ?>
-                  <form action="backend/voucher/editVoucher.php" method="post">
+                  <form action="backend/diskon/editDiskon.php" method="post">
                     <div class="card-body">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Nama Voucher</label>
-                        <input type="text" name="nama_voucher" class="form-control" id="exampleInputEmail1" value="<?= $value->nama_kupon; ?>" required>
+                        <label for="exampleInputEmail1">Total Diskon</label>
+                        <input type="number" name="total_diskon" class="form-control" id="exampleInputEmail1" value="<?= $value->total_diskon; ?>" placeholder="Banyak Diskon" required>
                       </div>
                       <input type="hidden" name="id" value="<?= $_GET['id']; ?>">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Jenis Voucher</label>
-                        <select class="form-control" name="jenis_voucher">
-                          <?php if ($value->jenis_kupon=='persen'): ?>
-                            <option value="persen">% (persen)</option>
-                            <option value="potongan">Potongan (Uang)</option>
-                          <?php else: ?>
-                            <option value="potongan">Potongan (Uang)</option>
-                            <option value="persen">% (persen)</option>
-                          <?php endif; ?>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Total Diskon</label>
-                        <input type="number" class="form-control" name="totaldiskon" value="<?= $value->total_diskon; ?>" required>
+                        <label for="exampleInputEmail1">Batas Awal Berlaku</label>
+                        <input type="date" class="form-control" name="tanggal_awal" value="<?= $value->tanggal_awal; ?>" required>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Batas Masa Berlaku</label>
-                        <input type="date" class="form-control" name="masa_berlaku" value="<?= $value->masa_berlaku; ?>" required>
+                        <input type="date" class="form-control" name="tanggal_akhir" value="<?= $value->tanggal_akhir; ?>" required>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Keterangan</label>
-                        <textarea name="deskripsi" class="form-control" rows="2" cols="80" style="resize:none;" value="<?= $value->deskripsi; ?>" placeholder="<?= $value->deskripsi; ?> "required><?= $value->deskripsi; ?></textarea>
+                        <textarea name="deskripsi" class="form-control" rows="2" cols="80" style="resize:none;" value="<?= $value->deskripsi; ?>" placeholder="Keterangan Voucher" required><?= $value->deskripsi; ?></textarea>
                       </div>
                     </div>
                     <!-- /.card-body -->
@@ -99,7 +87,7 @@
                     </div>
                   </form>
                 <?php else: ?>
-                  <form action="backend/voucher/addVoucher.php" method="post">
+                  <form action="backend/diskon/addDiskon.php" method="post">
                     <div class="card-body">
                       <div class="form-group">
                         <?php if (isset($_GET['alert'])): ?>
@@ -107,23 +95,16 @@
                             Gagal Menambah/Mengubah Voucher
                           </div>
                         <?php endif; ?>
-                        <label for="exampleInputEmail1">Nama Voucher</label>
-                        <input type="text" name="nama_voucher" class="form-control" id="exampleInputEmail1" placeholder="Nama Voucher" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Jenis Voucher</label>
-                        <select class="form-control" name="jenis_voucher">
-                          <option value="persen">% (persen)</option>
-                          <option value="potongan">Potongan (Uang)</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
                         <label for="exampleInputEmail1">Total Diskon</label>
-                        <input type="number" class="form-control" name="totaldiskon" placeholder="Sesuaikan dengan jenis voucher" required>
+                        <input type="number" name="total_diskon" class="form-control" id="exampleInputEmail1" placeholder="Banyak Diskon" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Batas Awal Berlaku</label>
+                        <input type="date" class="form-control" name="tanggal_awal" required>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Batas Masa Berlaku</label>
-                        <input type="date" class="form-control" name="masa_berlaku" placeholder="Sesuaikan dengan jenis voucher" required>
+                        <input type="date" class="form-control" name="tanggal_akhir" required>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Keterangan</label>
@@ -152,8 +133,8 @@
                     <thead>
                       <tr>
                         <th>Nama Kupon</th>
-                        <th>Jenis Kupon</th>
                         <th>Total Diskon</th>
+                        <th>Batas Awal</th>
                         <th>Batas Akhir</th>
                         <th>Status</th>
                         <th>Aksi</th>
@@ -161,29 +142,21 @@
                     </thead>
                     <tbody>
                       <?php $no = 0; ?>
-                      <?php $query = $mysqli->query("SELECT * FROM tb_kupon WHERE status='0'"); ?>
+                      <?php $query = $mysqli->query("SELECT * FROM tb_diskon WHERE status='0'"); ?>
                       <?php while ($value = $query->fetch_object()) { ?>
                         <tr>
-                          <td><b><?= $value->nama_kupon; ?></b></td>
-
-                          <?php if ($value->jenis_kupon=='potongan'): ?>
-                            <td>POTONGAN</td>
-                            <td>Rp. <?= number_format($value->total_diskon); ?></td>
-                          <?php else: ?>
-                            <td>% PERSEN</td>
-                            <td><?= $value->total_diskon; ?>%</td>
-                          <?php endif; ?>
-
-                          <td><?= date("d F Y", strtotime($value->masa_berlaku)); ?></td>
-
+                          <td><b>DISKON</b></td>
+                          <td>Rp. <?= number_format($value->total_diskon); ?>;-</td>
+                          <td><?= date("d F Y", strtotime($value->tanggal_awal)); ?></td>
+                          <td><?= date("d F Y", strtotime($value->tanggal_akhir)); ?></td>
                           <?php if ($value->status==1): ?>
                             <td>Hangus</td>
                           <?php else: ?>
                             <td>Berlaku</td>
                           <?php endif; ?>
                           <td>
-                            <a href="masterVoucher.php?id=<?= $value->id_kupon; ?>" class="btn btn-info">Edit</a>
-                            <a href="backend/voucher/deleteVoucher.php?id=<?= $value->id_kupon; ?>" class="btn btn-danger">Hapus</a>
+                            <a href="masterDiskon.php?id=<?= $value->id_diskon; ?>" class="btn btn-info">Edit</a>
+                            <a href="backend/diskon/deleteDiskon.php?id=<?= $value->id_diskon; ?>" class="btn btn-danger">Hapus</a>
                           </td>
                         </tr>
                       <?php } ?>

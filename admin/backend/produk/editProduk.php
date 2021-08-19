@@ -28,18 +28,21 @@ if ($mysqli->query("UPDATE tb_produk SET nama_produk='$_POST[nama_produk]', stok
   $jenis_file	= array('png','jpg', 'jpeg');
   $images = $_FILES['gambar'];
 
-  foreach ($_FILES['gambar']['name'] as $key => $value) {
-    $filename = $value;
-    $file_tmp = $images['tmp_name'][$key];
+  if ($_FILES['gambar']['name']!='') {
+    foreach ($_FILES['gambar']['name'] as $key => $value) {
+      $filename = $value;
+      $file_tmp = $images['tmp_name'][$key];
 
-    $explode = explode('.', $value);
-    $validation = strtolower(end($explode));
+      $explode = explode('.', $value);
+      $validation = strtolower(end($explode));
 
-    if (in_array($validation, $jenis_file)===TRUE) {
-      if (move_uploaded_file($file_tmp, '../../../vendor/product_img/'.$filename)) {
-        $mysqli->query("INSERT INTO tb_gambar(id_produk, filename) VALUES('$id_produk', '$value')");
+      if (in_array($validation, $jenis_file)===TRUE) {
+        if (move_uploaded_file($file_tmp, '../../../vendor/product_img/'.$filename)) {
+          $mysqli->query("INSERT INTO tb_gambar(id_produk, filename) VALUES('$id_produk', '$value')");
+        }
       }
     }
+
   }
 
   #pergi ke halaman list
