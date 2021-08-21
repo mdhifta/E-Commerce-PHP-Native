@@ -4,8 +4,8 @@
     <div class="row align-items-center">
       <!--Desktop Logo-->
       <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
-        <a href="index.php">
-          <img src="../vendor/assets/logo.jpg" width="50" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template"/>
+        <a href="../../../../../public/index.php">
+          <img src="../../../../../vendor/assets/logo.jpg" width="50" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template"/>
           Lechy Beutique
         </a>
       </div>
@@ -23,24 +23,24 @@
           <ul id="siteNav" class="site-nav medium center hidearrow">
 
             <?php if (!isset($_SESSION['id_costumer'])): ?>
-              <li class="lvl1 parent megamenu"><a href="index.php">Home <i class="anm anm-angle-down-l"></i></a></li>
+              <li class="lvl1 parent megamenu"><a href="../../../../../public/index.php">Home <i class="anm anm-angle-down-l"></i></a></li>
             <?php endif; ?>
 
-            <li class="lvl1 parent megamenu"><a href="produk.php">Product <i class="anm anm-angle-down-l"></i></a></li>
+            <li class="lvl1 parent megamenu"><a href="../../../../../public/produk.php">Product <i class="anm anm-angle-down-l"></i></a></li>
 
             <li class="lvl1 parent dropdown"><a href="#">Kategori <i class="anm anm-angle-down-l"></i></a>
               <ul class="dropdown">
                 <?php $kategori = $mysqli->query("SELECT * FROM tb_kategori"); ?>
                 <?php while ($value = $kategori->fetch_object()) { ?>
-                  <li><a href="search.php?id=<?= $value->id_kategori; ?>" class="site-nav"><?= $value->jenis_kategori; ?></a></li>
+                  <li><a href="../../../../../public/search.php?id=<?= $value->id_kategori; ?>" class="site-nav"><?= $value->jenis_kategori; ?></a></li>
                 <?php } ?>
               </ul>
             </li>
 
             <?php if (isset($_SESSION['id_costumer'])): ?>
-              <li class="lvl1 parent dropdown"><a href="transaction_list.php">Riwayat Transaksi <i class="anm anm-angle-down-l"></i></a></li>
-              <li class="lvl1 parent dropdown"><a href="payment_list.php">Pembayaran <i class="anm anm-angle-down-l"></i></a></li>
-              <li class="lvl1 parent dropdown"><a href="topup.php">Topup <i class="anm anm-angle-down-l"></i></a></li>
+              <li class="lvl1 parent dropdown"><a href="../../../../../public/transaction_list.php">Riwayat Transaksi <i class="anm anm-angle-down-l"></i></a></li>
+              <li class="lvl1 parent dropdown"><a href="../../../../../public/payment_list.php">Pembayaran <i class="anm anm-angle-down-l"></i></a></li>
+              <li class="lvl1 parent dropdown"><a href="../../../../../public/topup.php">Topup <i class="anm anm-angle-down-l"></i></a></li>
             <?php endif; ?>
 
             <?php if (!isset($_SESSION['id_costumer'])): ?>
@@ -54,7 +54,7 @@
       <!--Mobile Logo-->
       <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
         <div class="logo">
-          <a href="index.php">
+          <a href="../../../../../public/index.php">
             <h2>Lechy Beutique</h2>
           </a>
         </div>
@@ -63,7 +63,7 @@
 
       <div class="col-4 col-sm-3 col-md-3 col-lg-2">
         <div class="site-cart">
-          <a href="cart.php" style="font-size:22px; text-decoration:none;">
+          <a href="../../../../../public/cart.php" style="font-size:22px; text-decoration:none;">
             <i class="icon anm anm-bag-l"></i>
           </a>
         </div>

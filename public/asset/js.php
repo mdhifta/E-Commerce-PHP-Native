@@ -1,3 +1,48 @@
+<script type="text/javascript" language="javascript">
+$(document).ready(function(){
+  $('#province').change(function(){
+    var prov = $('#province').val();
+    $.ajax({
+      type : 'POST',
+      url : 'backend/rajaongkir/getCity.php',
+      data :  'prov_id=' + prov,
+      success: function (data) {
+        $("#city").html(data);
+        $("#city").niceSelect('update');
+      }
+    });
+  });
+
+  $("#courir").change(function(){
+    var from = "255";
+    var city = $('#city').val();
+    var courir = $('#courir').val();
+    $.ajax({
+      type : 'POST',
+      url : 'backend/rajaongkir/getPrice.php',
+      data :  {'city_id' : city, 'courir' : courir, 'from' : from},
+      success: function (data) {
+        $("#type").html(data);
+        $("#type").niceSelect('update');
+      }
+    });
+  });
+
+  $("#type").change(function(){
+    var array = $('#type').val();
+    $.ajax({
+      type : 'POST',
+      url : 'backend/rajaongkir/setPrice.php',
+      data :  'array=' + array,
+      success: function (data) {
+        $("#price_ongkir").html(data);
+        $("#price_ongkir").niceSelect('update');
+      }
+    });
+  });
+});
+</script>
+
 <!-- Including Jquery -->
 <script src="../vendor/assets/js/vendor/jquery-3.3.1.min.js"></script>
 <script src="../vendor/assets/js/vendor/modernizr-3.6.0.min.js"></script>

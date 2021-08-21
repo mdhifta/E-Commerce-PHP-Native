@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../config/config.php';
- ?>
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -41,6 +41,8 @@ include '../config/config.php';
                 <thead class="cart__row cart__header">
                   <tr>
                     <th colspan="2" class="text-center">Product</th>
+                    <th class="text-center">Color</th>
+                    <th class="text-center">Size</th>
                     <th class="text-center">Price</th>
                     <th class="text-center">Quantity</th>
                     <th class="text-right">Total</th>
@@ -49,35 +51,72 @@ include '../config/config.php';
                 </thead>
                 <tbody>
 
+                  <?php $total = 0; ?>
+                  <?php if (isset($_SESSION['mycart'])): ?>
+                    <?php foreach($_SESSION['mycart'] as $id_produk => $jumlah): ?>
+                      <?php $query = $mysqli->query("SELECT * FROM tb_produk as tbp JOIN tb_gambar as tbg ON tbg.id_produk=tbp.id_produk WHERE tbp.id_produk='$id_produk'"); ?>
+                      <?php $get_data = $query->fetch_object(); ?>
+                      <tr class="cart__row border-bottom line1 cart-flex border-top">
+                        <td class="cart__image-wrapper cart-flex-item">
+                          <a href="#"><img class="cart__image" src="../vendor/product_img/<?= $get_data->filename; ?>" alt="gambar produk"></a>
+                        </td>
+                        <td class="cart__meta small--text-left cart-flex-item">
+                          <div class="list-view-item__title">
+                            <a href="#"><?= $get_data->nama_produk; ?></a>
+                          </div>
+                        </td>
 
-                  <tr class="cart__row border-bottom line1 cart-flex border-top">
-                    <td class="cart__image-wrapper cart-flex-item">
-                      <a href="#"><img class="cart__image" src="../vendor/assets/images/product-images/home7-product4.jpg" alt="Minerva Dress black"></a>
-                    </td>
-                    <td class="cart__meta small--text-left cart-flex-item">
-                      <div class="list-view-item__title">
-                        <a href="#">Minerva Dress black</a>
-                      </div>
-                    </td>
-                    <td class="cart__price-wrapper cart-flex-item">
-                      <span class="money">$526.00</span>
-                    </td>
-                    <td class="cart__update-wrapper cart-flex-item text-right">
-                      <div class="cart__qty text-center">
-                        <div class="qtyField">
-                          <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
-                          <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*">
-                          <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-right small--hide cart-price">
-                      <div><span class="money">$735.00</span></div>
-                    </td>
-                    <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
-                  </tr>
+                        <?php $id_warna = $_SESSION['colors'][$id_produk]; ?>
+                        <?php $color_query = $mysqli->query("SELECT * FROM tb_warna WHERE id_warna='$id_warna'"); ?>
+                        <?php $get_colors = $color_query->fetch_object(); ?>
+                        <td class="cart__price-wrapper cart-flex-item">
+                          <div class="list-view-item__title">
+                            <a href="#"><?= $get_colors->jenis_warna; ?></a>
+                          </div>
+                        </td>
 
+                        <?php $id_size = $_SESSION['size'][$id_produk]; ?>
+                        <?php $size_query = $mysqli->query("SELECT * FROM tb_ukuran WHERE id_ukuran='$id_size'"); ?>
+                        <?php $get_size = $size_query->fetch_object(); ?>
+                        <td class="cart__price-wrapper cart-flex-item">
+                          <div class="list-view-item__title">
+                            <a href="#"><?= $get_size->jenis_ukuran; ?></a>
+                          </div>
+                        </td>
 
+                        <?php $diskon = $mysqli->query("SELECT * FROM tb_dt_diskon as tdd JOIN tb_diskon as tbd ON tbd.id_diskon=tdd.id_diskon WHERE tdd.id_produk='$get_data->id_produk'"); ?>
+                        <?php $getDiskon = $diskon->fetch_object(); ?>
+
+                        <?php if ($getDiskon!=''): ?>
+                          <?php $totalHarga = $get_data->harga_produk-$getDiskon->total_diskon; ?>
+                        <?php else: ?>
+                          <?php $totalHarga = $get_data->harga_produk; ?>
+                        <?php endif; ?>
+
+                        <td class="cart__price-wrapper cart-flex-item">
+                          <span class="money">Rp.<?= number_format($totalHarga); ?>;-</span>
+                        </td>
+                        <td class="cart__update-wrapper cart-flex-item text-right">
+                          <div class="cart__qty text-center">
+                            <div class="qtyField">
+                              <a class="qtyBtn minus" href="backend/cart/removeCart.php?id=<?= $get_data->id_produk; ?>"><i class="icon icon-minus"></i></a>
+                              <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="<?= $jumlah; ?>" pattern="[0-9]*">
+                              <a class="qtyBtn plus" href="backend/cart/addCart.php?id=<?= $get_data->id_produk; ?>"><i class="icon icon-plus"></i></a>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-right small--hide cart-price">
+                          <div><span class="money">Rp.<?= number_format($totalHarga*$jumlah); ?></span></div>
+                        </td>
+                        <td class="text-center small--hide"><a href="backend/cart/clearCart.php?id=<?= $get_data->id_produk; ?>" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
+                      </tr>
+                      <?php $total = $total + $totalHarga * $jumlah; ?>
+                    <?php endforeach; ?>
+                  <?php else: ?>
+                    <tr>
+                      <td colspan="6"></td>
+                    </tr>
+                  <?php endif; ?>
                 </tbody>
                 <tfoot>
                   <tr>
@@ -88,84 +127,32 @@ include '../config/config.php';
             </form>
           </div>
 
+          <?php if (isset($_SESSION['id_costumer'])): ?>
+            <?php $_SESSION['subtotal'] = $total; ?>
+            <div class="container mt-4">
+              <div class="row">
 
-          <div class="container mt-4">
-            <div class="row">
+                <?php include 'asset/select-ongkir.php'; ?>
 
-              <div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
-                <h5>Estimate Shipping and Tax</h5>
-                <form action="#" method="post">
-                  <div class="form-group">
-                    <label for="address_country">Country</label>
-                    <select id="address_country" name="address[country]" data-default="United States"><option value="Belgium" data-provinces="[]">Belgium</option>
-                      <option value="---" data-provinces="[]">---</option>
-                      <option value="Vietnam" data-provinces="[]">Vietnam</option>
-                      <option value="Wallis And Futuna" data-provinces="[]">Wallis &amp; Futuna</option>
-                      <option value="Western Sahara" data-provinces="[]">Western Sahara</option>
-                      <option value="Yemen" data-provinces="[]">Yemen</option>
-                      <option value="Zambia" data-provinces="[]">Zambia</option>
-                      <option value="Zimbabwe" data-provinces="[]">Zimbabwe</option></select>
-                    </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer" id="price_ongkir"></div>
 
-                    <div class="form-group">
-                      <label>State</label>
-                      <select id="address_province" name="address[province]" data-default="">
-                        <option value="Wyoming">Wyoming</option>
-                        <option value="Armed Forces Americas">Armed Forces Americas</option>
-                        <option value="Armed Forces Europe">Armed Forces Europe</option>
-                        <option value="Armed Forces Pacific">Armed Forces Pacific</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="address_zip">Postal/Zip Code</label>
-                      <input type="text" id="address_zip" name="address[zip]">
-                    </div>
-
-                    <div class="actionRow">
-                      <div><input type="button" class="btn btn-secondary btn--small" value="Calculate shipping"></div>
-                    </div>
-                  </form>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
-                  <div class="solid-border">
-                    <div class="row border-bottom pb-2">
-                      <span class="col-12 col-sm-6 cart__subtotal-title">Subtotal</span>
-                      <span class="col-12 col-sm-6 text-right"><span class="money">$735.00</span></span>
-                    </div>
-                    <div class="row border-bottom pb-2 pt-2">
-                      <span class="col-12 col-sm-6 cart__subtotal-title">Tax</span>
-                      <span class="col-12 col-sm-6 text-right">$10.00</span>
-                    </div>
-                    <div class="row border-bottom pb-2 pt-2">
-                      <span class="col-12 col-sm-6 cart__subtotal-title">Shipping</span>
-                      <span class="col-12 col-sm-6 text-right">Free shipping</span>
-                    </div>
-                    <div class="row border-bottom pb-2 pt-2">
-                      <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Grand Total</strong></span>
-                      <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">$1001.00</span></span>
-                    </div>
-                    <input type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Proceed To Checkout" disabled="disabled">
-                  </div>
-
-                </div>
               </div>
             </div>
-
-          </div>
+          <?php endif; ?>
         </div>
-
       </div>
-      <!--End Body Content-->
 
-      <?php include 'asset/footer.php'; ?>
-      <!--Scoll Top-->
-      <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
-      <!--End Scoll Top-->
-
-      <?php include 'asset/js.php'; ?>
     </div>
-  </body>
+    <!--End Body Content-->
 
-  <!-- belle/cart-variant1.html   11 Nov 2019 12:44:32 GMT -->
-  </html>
+    <?php include 'asset/footer.php'; ?>
+    <!--Scoll Top-->
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+    <!--End Scoll Top-->
+
+    <?php include 'asset/js.php'; ?>
+  </div>
+</body>
+
+<!-- belle/cart-variant1.html   11 Nov 2019 12:44:32 GMT -->
+</html>

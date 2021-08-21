@@ -28,11 +28,11 @@
         <span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
         <ul class="customer-links list-inline">
           <?php if (!isset($_SESSION['id_costumer'])): ?>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="register.php">Create Account</a></li>
+            <li><a href="../../../../../public/login.php">Login</a></li>
+            <li><a href="../../../../../public/register.php">Create Account</a></li>
           <?php else: ?>
-            <li><a href="backend/logout.php">Logout</a></li>
-            <li><a href="profil.php"><?= $account->lname; ?> (saldo : Rp.<?= number_format($account->saldo); ?>;-)</a></li>
+            <li><a href="../../../../../public/backend/logout.php">Logout</a></li>
+            <li><a href="../../../../../public/profil.php"><?= $account->lname; ?> (saldo : Rp.<?= number_format($account->saldo); ?>;-)</a></li>
           <?php endif; ?>
         </ul>
       </div>

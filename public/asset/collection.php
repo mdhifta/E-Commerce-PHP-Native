@@ -42,23 +42,14 @@
                       <!-- end product image -->
 
                       <!-- Start product button -->
-                      <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                        <button class="btn btn-addto-cart" type="button" tabindex="0">Select Options</button>
+                      <form class="variants add" action="detail.php" method="get">
+                        <input type="hidden" name="id" value="<?= $value->id_produk; ?>">
+                        <button class="btn btn-addto-cart" tabindex="0">Select Options</button>
                       </form>
                       <div class="button-set">
-                        <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+                        <a href="" title="Quick View" class="quick-view-popup quick-view" id="<?= $value->id_produk; ?>" onclick="getView(this)" data-toggle="modal" data-target="#content_quickview">
                           <i class="icon anm anm-search-plus-r"></i>
                         </a>
-                        <div class="wishlist-btn">
-                          <a class="wishlist add-to-wishlist" href="wishlist.html">
-                            <i class="icon anm anm-heart-l"></i>
-                          </a>
-                        </div>
-                        <div class="compare-btn">
-                          <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                            <i class="icon anm anm-random-r"></i>
-                          </a>
-                        </div>
                       </div>
                       <!-- end product button -->
                     </div>
@@ -203,7 +194,8 @@
                       <!-- end product image -->
 
                       <!-- Start product button -->
-                      <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
+                      <form class="variants add" action="detail.php" method="get">
+                        <input type="hidden" name="id" value="<?= $value->id_produk; ?>">
                         <button class="btn btn-addto-cart" type="button" tabindex="0">Select Options</button>
                       </form>
                       <div class="button-set">
