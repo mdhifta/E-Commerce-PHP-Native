@@ -1,0 +1,7 @@
+{
+    "require": {
+        "monolog/monolog": "2.0.*",
+        "phpmailer/phpmailer": "^6.5"
+    }
+
+}

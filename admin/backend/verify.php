@@ -6,14 +6,22 @@ include '../../config/config.php';
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$query = $mysqli->query("SELECT * FROM tb_user WHERE email='$email' AND password='$password' AND roles='0'");
+$query = $mysqli->query("SELECT * FROM tb_user WHERE email='$email' AND password='$password'");
 $validation = $query->num_rows;
 
+$role = $query->fetch_object();
+
 if ($validation==1) {
-  $data = $query->fetch_object();
-  $_SESSION['id_user'] = $data->id_user;
-  header('Location:../dashboard.php');
+  if ($role->roles=='0') {
+    $_SESSION['id_user'] = $role->id_user;
+    header('Location:../dashboard.php');
+  } elseif ($role->roles=='2') {
+    $_SESSION['id_master'] = $role->id_user;
+    header('Location:../../master/dashboard.php');
+  } else {
+    header('Location:../../public/');
+  }
 } else {
   header('Location:../index.php?id=1');
 }
- ?>
+?>

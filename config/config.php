@@ -1,5 +1,5 @@
 <?php
 
-$mysqli = new mysqli('localhost', 'root', '', 'db_lechy');
+$mysqli = new mysqli('localhost', 'mdhifta', 'shoera', 'db_lechy');
 
  ?>

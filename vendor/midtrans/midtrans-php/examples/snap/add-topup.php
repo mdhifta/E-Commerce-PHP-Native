@@ -29,7 +29,8 @@ if (isset($result->permata_va_number)) {
   $bank = $vas_number[0]->bank;
 }
 
-$verif = $mysqli->query("INSERT INTO tb_topup(id_user, total_topup, bank, no_virtual, tanggal_topup, status) VALUES('$id_costumer', '$jumlah', '$bank', '$no_virtual', NOW(), '0')");
+echo $no_virtual;
+$verif = $mysqli->query("INSERT INTO tb_topup(id_user, total_topup, bank, no_virtual, tanggal_topup, status, no_order) VALUES('$id_costumer', '$jumlah', '$bank', '$no_virtual', NOW(), '0', '$no_order')");
 
 if ($verif) {
   header("Location:../../../../../public/topup.php");

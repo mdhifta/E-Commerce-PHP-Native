@@ -1,11 +1,11 @@
 <?php
 
 namespace Midtrans;
-include '../../../../koneksi.php';
+include '../../../../config/config.php';
 
 require_once dirname(__FILE__) . '/../Midtrans.php';
 Config::$isProduction = false;
-Config::$serverKey = 'SB-Mid-server-9HojBqZbOz3saQ2VFspC2gtP';
+Config::$serverKey = 'SB-Mid-server-ch4wJ1sT4jkK3xdjugS16In7';
 $notif = new Notification();
 
 $transaction = $notif->transaction_status;
@@ -27,32 +27,85 @@ if ($transaction == 'capture') {
   }
 } else if ($transaction == 'settlement') {
   // TODO set payment status in merchant's database to 'Settlement'
-  if ($mysqli->query("UPDATE pembayaran SET status='1' WHERE no_order='$order_id'")) {
-    #get data id_pembelian
-    $query = $mysqli->query("SELECT * FROM pembayaran WHERE no_order='$order_id'");
-    $data = $query->fetch_object();
-    if ($mysqli->query("UPDATE pembelian SET status_pembelian='200' WHERE id_pembelian='$data->id_pembelian'")) {
-      echo "Transaction order_id: " . $order_id ." successfully transfered using " . $type;
+
+  $verify_transaksi = $mysqli->query("SELECT * FROM tb_transaksi WHERE no_order='$order_id'");
+  $verify = $verify_transaksi->num_rows;
+
+  if ($verify==1) {
+    $get_id = $verify_transaksi->fetch_object();
+    if ($mysqli->query("UPDATE tb_pembayaran SET status='1' WHERE id_transaksi='$get_id->id_transaksi'")) {
+      $getProduk = $mysqli->query("SELECT * FROM tb_dt_transaksi WHERE id_transaksi='$get_id->transaksi'");
+
+      while ($values = $getProduk->fetch_object()) {
+        $mysqli->query("UPDATE tb_produk SET stok=stok-$values->banyak WHERE id_produk='$values->id_produk'");
+      }
+
+      echo "Sukses Transaksi";
+    }
+  } else {
+    if ($mysqli->query("UPDATE tb_topup SET status='1' WHERE no_order='$order_id'")) {
+      $getPrice = $mysqli->query("SELECT * FROM tb_topup WHERE no_order='$order_id'");
+      $price = $getPrice->fetch_object();
+      if ($mysqli->query("UPDATE tb_user SET saldo=saldo+$price->total_topup WHERE id_user='$price->id_user'")) {
+        echo "Sukses Topup";
+      }
     }
   }
+
 } else if ($transaction == 'pending') {
   // TODO set payment status in merchant's database to 'Pending'
   echo "Waiting customer to finish transaction order_id: " . $order_id . " using " . $type;
 } else if ($transaction == 'deny') {
   // TODO set payment status in merchant's database to 'Denied'
-  echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is denied.";
-} else if ($transaction == 'expire') {
-  if ($mysqli->query("UPDATE pembayaran SET status='0' WHERE no_order='$order_id'")) {
-    #get data id_pembelian
-    $query = $mysqli->query("SELECT * FROM pembayaran WHERE no_order='$order_id'");
-    $data = $query->fetch_object();
-    if ($mysqli->query("UPDATE pembelian SET status_pembelian='202' WHERE id_pembelian='$data->id_pembelian'")) {
-      echo "Transaction order_id: " . $order_id ." successfully transfered using " . $type;
+
+  $verify_transaksi = $mysqli->query("SELECT * FROM tb_transaksi WHERE no_order='$order_id'");
+  $verify = $verify_transaksi->num_rows;
+
+  if ($verify==1) {
+    $get_id = $verify_transaksi->fetch_object();
+    if ($mysqli->query("UPDATE tb_pembayaran SET status='2' WHERE id_transaksi='$get_id->id_transaksi'")) {
+      echo "Denied Transaksi Sukses Update";
+    }
+  } else {
+    if ($mysqli->query("UPDATE tb_topup SET status='2' WHERE no_order='$order_id'")) {
+      echo "Denied Sukses Update";
     }
   }
+
+  echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is denied.";
+} else if ($transaction == 'failure') {
+
+  $verify_transaksi = $mysqli->query("SELECT * FROM tb_transaksi WHERE no_order='$order_id'");
+  $verify = $verify_transaksi->num_rows;
+
+  if ($verify==1) {
+    $get_id = $verify_transaksi->fetch_object();
+    if ($mysqli->query("UPDATE tb_pembayaran SET status='2' WHERE id_transaksi='$get_id->id_transaksi'")) {
+      echo "Expired Transaksi Sukses Update";
+    }
+  } else {
+    if ($mysqli->query("UPDATE tb_topup SET status='2' WHERE no_order='$order_id'")) {
+      echo "Expired Sukses Update";
+    }
+  }
+
   echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is expired.";
 } else if ($transaction == 'cancel') {
   // TODO set payment status in merchant's database to 'Denied'
+
+  $verify_transaksi = $mysqli->query("SELECT * FROM tb_transaksi WHERE no_order='$order_id'");
+  $verify = $verify_transaksi->num_rows;
+
+  if ($verify==1) {
+    $get_id = $verify_transaksi->fetch_object();
+    if ($mysqli->query("UPDATE tb_pembayaran SET status='2' WHERE id_transaksi='$get_id->id_transaksi'")) {
+      echo "Denied Transaksi Sukses Update";
+    }
+  } else {
+    if ($mysqli->query("UPDATE tb_topup SET status='2' WHERE no_order='$order_id'")) {
+      echo "Denied Sukses Update";
+    }
+  }
   echo "Payment using " . $type . " for transaction order_id: " . $order_id . " is canceled.";
 }
 ?>

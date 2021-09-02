@@ -46,6 +46,14 @@ include '../config/config.php';
                   <div class="alert alert-success" role="alert">
                     Berhasil Logout!
                   </div>
+                <?php } elseif ($_GET['alert']==3) { ?>
+                  <div class="alert alert-success" role="alert">
+                    Silakan cek email anda untuk mengubah password!
+                  </div>
+                <?php } elseif ($_GET['alert']==4) { ?>
+                  <div class="alert alert-success" role="alert">
+                    Berhasil Mengubah Password!
+                  </div>
                 <?php } ?>
               <?php } ?>
 
@@ -66,7 +74,8 @@ include '../config/config.php';
                 </div>
                 <div class="row">
                   <div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-                    <input type="submit" class="btn mb-3" value="Login">
+                    <input type="submit" class="btn mb-3" value="Login"><br>
+                    <a href="forget_password.php">Lupa password?</a>
                   </div>
                 </div>
               </form>

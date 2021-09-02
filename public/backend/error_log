@@ -1,0 +1,43 @@
+[25-Aug-2021 17:42:55 Asia/Jakarta] PHP Notice:  Undefined variable: user in /home/lecm6773/public_html/LechyProject/public/backend/login.php on line 11
+[25-Aug-2021 17:42:55 Asia/Jakarta] PHP Notice:  Trying to get property of non-object in /home/lecm6773/public_html/LechyProject/public/backend/login.php on line 11
+[25-Aug-2021 19:46:31 Asia/Jakarta] PHP Notice:  Undefined variable: user in /home/lecm6773/public_html/LechyProject/public/backend/login.php on line 11
+[25-Aug-2021 19:46:31 Asia/Jakarta] PHP Notice:  Trying to get property of non-object in /home/lecm6773/public_html/LechyProject/public/backend/login.php on line 11
+[28-Aug-2021 21:29:02 Asia/Jakarta] PHP Notice:  Undefined variable: user in /home/lecm6773/public_html/LechyProject/public/backend/login.php on line 11
+[28-Aug-2021 21:29:02 Asia/Jakarta] PHP Notice:  Trying to get property of non-object in /home/lecm6773/public_html/LechyProject/public/backend/login.php on line 11
+[28-Aug-2021 21:40:54 Asia/Jakarta] PHP Notice:  Undefined variable: user in /home/lecm6773/public_html/LechyProject/public/backend/login.php on line 11
+[28-Aug-2021 21:40:54 Asia/Jakarta] PHP Notice:  Trying to get property of non-object in /home/lecm6773/public_html/LechyProject/public/backend/login.php on line 11
+[29-Aug-2021 12:53:26 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/lecm6773/public_html/LechyProject/public/backend/vendor/guzzlehttp/guzzle/src/functions.php on line 16
+[29-Aug-2021 12:54:13 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/lecm6773/public_html/LechyProject/public/backend/vendor/guzzlehttp/guzzle/src/functions.php on line 16
+[29-Aug-2021 12:55:15 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 12:55:47 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 12:55:52 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/lecm6773/public_html/LechyProject/public/backend/vendor/guzzlehttp/guzzle/src/functions.php on line 16
+[29-Aug-2021 12:57:22 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 12:57:35 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/lecm6773/public_html/LechyProject/public/backend/vendor/guzzlehttp/guzzle/src/functions.php on line 16
+[29-Aug-2021 12:58:09 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/lecm6773/public_html/LechyProject/public/backend/vendor/guzzlehttp/guzzle/src/functions.php on line 16
+[29-Aug-2021 12:59:34 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/lecm6773/public_html/LechyProject/public/backend/vendor/guzzlehttp/guzzle/src/functions.php on line 16
+[29-Aug-2021 13:01:56 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 13:02:31 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 13:02:57 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 13:02:57 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/lecm6773/public_html/LechyProject/public/backend/vendor/guzzlehttp/guzzle/src/functions.php on line 16
+[29-Aug-2021 13:03:41 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 13:03:41 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/lecm6773/public_html/LechyProject/public/backend/vendor/guzzlehttp/guzzle/src/functions.php on line 16
+[29-Aug-2021 13:04:42 Asia/Jakarta] PHP Warning:  require(../vendor/autoload.php): failed to open stream: No such file or directory in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 15
+[29-Aug-2021 13:04:42 Asia/Jakarta] PHP Warning:  require(../vendor/autoload.php): failed to open stream: No such file or directory in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 15
+[29-Aug-2021 13:04:42 Asia/Jakarta] PHP Fatal error:  require(): Failed opening required '../vendor/autoload.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 15
+[29-Aug-2021 13:05:33 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 13:05:33 Asia/Jakarta] PHP Warning:  require(../vendor/autoload.php): failed to open stream: No such file or directory in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 15
+[29-Aug-2021 13:05:33 Asia/Jakarta] PHP Warning:  require(../vendor/autoload.php): failed to open stream: No such file or directory in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 15
+[29-Aug-2021 13:05:33 Asia/Jakarta] PHP Fatal error:  require(): Failed opening required '../vendor/autoload.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 15
+[29-Aug-2021 13:05:43 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 13:05:43 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/lecm6773/public_html/LechyProject/public/backend/vendor/guzzlehttp/guzzle/src/functions.php on line 16
+[29-Aug-2021 13:10:36 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 13:10:51 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 13:11:09 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[29-Aug-2021 13:11:12 Asia/Jakarta] PHP Warning:  require_once(/home/lecm6773/public_html/LechyProject/public/backend/vendorcomposer/autoload_real.php): failed to open stream: No such file or directory in /home/lecm6773/public_html/LechyProject/public/backend/vendor/autoload.php on line 5
+[29-Aug-2021 13:11:12 Asia/Jakarta] PHP Fatal error:  require_once(): Failed opening required '/home/lecm6773/public_html/LechyProject/public/backend/vendorcomposer/autoload_real.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/lecm6773/public_html/LechyProject/public/backend/vendor/autoload.php on line 5
+[01-Sep-2021 20:20:11 Asia/Jakarta] PHP Warning:  require_once(/home/lecm6773/public_html/LechyProject/public/backend/vendorcomposer/autoload_real.php): failed to open stream: No such file or directory in /home/lecm6773/public_html/LechyProject/public/backend/vendor/autoload.php on line 5
+[01-Sep-2021 20:20:11 Asia/Jakarta] PHP Fatal error:  require_once(): Failed opening required '/home/lecm6773/public_html/LechyProject/public/backend/vendorcomposer/autoload_real.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/lecm6773/public_html/LechyProject/public/backend/vendor/autoload.php on line 5
+[01-Sep-2021 20:22:57 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/lecm6773/public_html/LechyProject/public/backend/vendor/guzzlehttp/guzzle/src/functions.php on line 16
+[01-Sep-2021 20:22:59 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[01-Sep-2021 20:23:01 Asia/Jakarta] PHP Notice:  Undefined index: email in /home/lecm6773/public_html/LechyProject/public/backend/mail.php on line 12
+[01-Sep-2021 20:23:06 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/lecm6773/public_html/LechyProject/public/backend/vendor/guzzlehttp/guzzle/src/functions.php on line 16

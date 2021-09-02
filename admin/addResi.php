@@ -28,12 +28,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Nomor Resi</h1>
+              <h1 class="m-0">Add Resi Number</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Nomor Resi</li>
+                <li class="breadcrumb-item active">Add Resi Number</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -52,30 +52,30 @@
               <!-- general form elements -->
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Nomor Resi Form</h3>
+                  <h3 class="card-title">Resi Form</h3>
                 </div>
                 <!-- /.card-header -->
-                <form action="backend/transaksi/addResi.php" method="post">
-                  <div class="card-body">
-                    <div class="form-group">
-                      <?php if (isset($_GET['alert'])): ?>
-                        <div class="alert alert-danger" role="alert">
-                          Gagal Menambah/Mengubah Nomor Resi
-                        </div>
-                      <?php endif; ?>
-                      <input type="hidden" name="id_transaksi" value="<?= $_GET['id']; ?>">
-                      <label for="exampleInputEmail1">Nomor Resi</label>
-                      <input type="text" name="no_resi" class="form-control" id="exampleInputEmail1" placeholder="Nomor Resi" required>
+                <!-- form start -->
+                <?php if (isset($_GET['id'])): ?>
+                  <form action="backend/transaksi/addResi.php" method="post">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Nomor Resi</label>
+                        <input type="number" name="no_resi" class="form-control" id="exampleInputEmail1" placeholder="Enter the resi number" required>
+                        <input type="hidden" name="id" value="<?= $_GET['id']; ?>">
+                      </div>
                     </div>
-                  </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Tambah</button>
-                  </div>
-                </form>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">Tambah</button>
+                    </div>
+                  </form>
+                <?php endif; ?>
               </div>
               <!-- /.card -->
             </div>
+
           </div>
           <!-- /.row -->
         </div><!--/. container-fluid -->

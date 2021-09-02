@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2021 at 03:12 PM
+-- Generation Time: Aug 22, 2021 at 03:56 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -34,6 +34,16 @@ CREATE TABLE `tb_chat` (
   `teks` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tb_chat`
+--
+
+INSERT INTO `tb_chat` (`id_chat`, `id_user`, `id_room`, `teks`) VALUES
+(1, 2, 1, 'Kapan sampai?'),
+(2, 1, 1, 'Besok ya'),
+(4, 2, 1, 'oke, saya tunggu.'),
+(5, 63, 2, 'produk jaket tolong diperbanyak ya');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +59,13 @@ CREATE TABLE `tb_diskon` (
   `status` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tb_diskon`
+--
+
+INSERT INTO `tb_diskon` (`id_diskon`, `total_diskon`, `tanggal_awal`, `tanggal_akhir`, `deskripsi`, `status`) VALUES
+(1, 50000, '2021-08-13', '2021-08-28', 'Diskon Gebyar', '0');
+
 -- --------------------------------------------------------
 
 --
@@ -58,8 +75,16 @@ CREATE TABLE `tb_diskon` (
 CREATE TABLE `tb_dt_diskon` (
   `id_dt_diskon` int(11) NOT NULL,
   `id_diskon` int(11) NOT NULL,
-  `id_produk` int(11) NOT NULL
+  `id_produk` int(11) NOT NULL,
+  `status` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_dt_diskon`
+--
+
+INSERT INTO `tb_dt_diskon` (`id_dt_diskon`, `id_diskon`, `id_produk`, `status`) VALUES
+(1, 1, 24, '0');
 
 -- --------------------------------------------------------
 
@@ -75,6 +100,13 @@ CREATE TABLE `tb_dt_transaksi` (
   `id_warna` int(11) NOT NULL,
   `id_ukuran` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_dt_transaksi`
+--
+
+INSERT INTO `tb_dt_transaksi` (`id_dt_transaksi`, `id_transaksi`, `id_produk`, `banyak`, `id_warna`, `id_ukuran`) VALUES
+(11, 10, 25, 1, 29, 20);
 
 -- --------------------------------------------------------
 
@@ -100,7 +132,8 @@ INSERT INTO `tb_gambar` (`id_gambar`, `id_produk`, `filename`) VALUES
 (12, 25, 'camelia-reversible9.jpg'),
 (13, 24, 'camelia-reversible0.jpg'),
 (14, 24, 'camelia-reversible2.jpg'),
-(15, 24, 'camelia-reversible3.jpg');
+(15, 24, 'camelia-reversible3.jpg'),
+(16, 24, 'camelia-reversible5.jpg');
 
 -- --------------------------------------------------------
 
@@ -111,8 +144,16 @@ INSERT INTO `tb_gambar` (`id_gambar`, `id_produk`, `filename`) VALUES
 CREATE TABLE `tb_get_diskon` (
   `id_get_diskon` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_kupon` int(11) NOT NULL
+  `id_kupon` int(11) NOT NULL,
+  `status` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_get_diskon`
+--
+
+INSERT INTO `tb_get_diskon` (`id_get_diskon`, `id_user`, `id_kupon`, `status`) VALUES
+(1, 2, 3, '1');
 
 -- --------------------------------------------------------
 
@@ -149,6 +190,13 @@ CREATE TABLE `tb_komentar` (
   `tanggal_komentar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tb_komentar`
+--
+
+INSERT INTO `tb_komentar` (`id_komentar`, `id_user`, `id_produk`, `komentar`, `tanggal_komentar`) VALUES
+(1, 2, 25, 'Great produk, i like this.', '2021-08-22');
+
 -- --------------------------------------------------------
 
 --
@@ -170,7 +218,7 @@ CREATE TABLE `tb_kupon` (
 --
 
 INSERT INTO `tb_kupon` (`id_kupon`, `nama_kupon`, `jenis_kupon`, `total_diskon`, `masa_berlaku`, `deskripsi`, `status`) VALUES
-(3, '0', 'persen', 50, '2021-08-17', 'Belanja sepuasanya dengan potongan sebesar 50%', '0');
+(3, 'Mantap ', 'persen', 50, '2021-08-17', 'Belanja sepuasanya dengan potongan sebesar 50%', '0');
 
 -- --------------------------------------------------------
 
@@ -186,6 +234,13 @@ CREATE TABLE `tb_pembayaran` (
   `no_virtual` varchar(155) NOT NULL,
   `status` enum('0','1','2') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_pembayaran`
+--
+
+INSERT INTO `tb_pembayaran` (`id_pembayaran`, `id_transaksi`, `total_bayar`, `bank`, `no_virtual`, `status`) VALUES
+(10, 10, 365000, 'bca', '87512758439', '1');
 
 -- --------------------------------------------------------
 
@@ -209,7 +264,7 @@ CREATE TABLE `tb_produk` (
 --
 
 INSERT INTO `tb_produk` (`id_produk`, `nama_produk`, `stok`, `harga_produk`, `berat_produk`, `id_kategori`, `deskripsi_produk`, `status`) VALUES
-(24, 'Sweeter Gunung', 22, 550000, 750, 1, 'Jaket yang nyaman digunakan untuk musim dingin terutama jika anda ingin pergi mendaki gunung.', '0'),
+(24, 'Sweeter Gunung', 22, 550000, 750, 2, 'Produk terbaru', '0'),
 (25, 'Jaket Jass', 34, 350000, 680, 3, 'Cocok digunakan untuk berpergian maupun menghadiri acara formal/non-formal.', '0');
 
 -- --------------------------------------------------------
@@ -222,6 +277,14 @@ CREATE TABLE `tb_room` (
   `id_room` int(11) NOT NULL,
   `nama_room` varchar(144) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_room`
+--
+
+INSERT INTO `tb_room` (`id_room`, `nama_room`) VALUES
+(1, 'Melia Cahyani'),
+(2, 'Arya Pratama');
 
 -- --------------------------------------------------------
 
@@ -236,7 +299,8 @@ CREATE TABLE `tb_topup` (
   `bank` varchar(144) NOT NULL,
   `no_virtual` int(11) NOT NULL,
   `tanggal_topup` date NOT NULL,
-  `status` enum('0','1','2') NOT NULL
+  `status` enum('0','1','2') NOT NULL,
+  `no_order` varchar(144) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -247,6 +311,7 @@ CREATE TABLE `tb_topup` (
 
 CREATE TABLE `tb_transaksi` (
   `id_transaksi` int(11) NOT NULL,
+  `no_order` varchar(100) NOT NULL,
   `id_user` int(11) NOT NULL,
   `total_transaksi` int(11) NOT NULL,
   `jasa_pengiriman` varchar(144) NOT NULL,
@@ -255,8 +320,16 @@ CREATE TABLE `tb_transaksi` (
   `nama_penerima` varchar(144) NOT NULL,
   `provinsi_kirim` varchar(144) NOT NULL,
   `kota_kirim` varchar(144) NOT NULL,
-  `tanggal_transaksi` date NOT NULL
+  `tanggal_transaksi` date NOT NULL,
+  `no_resi` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_transaksi`
+--
+
+INSERT INTO `tb_transaksi` (`id_transaksi`, `no_order`, `id_user`, `total_transaksi`, `jasa_pengiriman`, `durasi_ongkir`, `alamat_kirim`, `nama_penerima`, `provinsi_kirim`, `kota_kirim`, `tanggal_transaksi`, `no_resi`) VALUES
+(10, '1805709378', 2, 365000, 'jne', '2-3 HARI', 'Kampung Bugel, RT. 01/04, Kelurahan Kaduagung, Kecamatan Tigaraksa, Kabupaten Tangerang, Banten, Indonesia.', 'M Dhifta', 'Banten', 'Tangerang', '2021-08-22', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -278,9 +351,7 @@ INSERT INTO `tb_ukuran` (`id_ukuran`, `id_produk`, `jenis_ukuran`) VALUES
 (20, 25, 'XL'),
 (21, 25, 'L'),
 (22, 25, 'M'),
-(23, 24, 'XL'),
-(24, 24, 'L'),
-(25, 24, 'M');
+(28, 24, 'XL');
 
 -- --------------------------------------------------------
 
@@ -305,7 +376,9 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `fname`, `lname`, `telephone`, `saldo`, `email`, `password`, `roles`, `status`) VALUES
-(1, 'M Dhifta', 'Ramadhan', '085896274580', 0, 'dhifta48@gmail.com', '12345', '0', '0');
+(1, 'M Dhifta', 'Ramadhan', '085896274580', 0, 'dhifta48@gmail.com', '12345', '0', '0'),
+(2, 'Selvy', 'Erhita', '085791419625', 0, 'selvyerhita@gmail.com', '123456', '1', '0'),
+(63, 'Arya', 'Pratama', '085791419627', 0, 'aryasura@gmail.com', '12345', '1', '0');
 
 -- --------------------------------------------------------
 
@@ -328,10 +401,7 @@ INSERT INTO `tb_warna` (`id_warna`, `id_produk`, `jenis_warna`) VALUES
 (29, 25, 'Biru'),
 (30, 25, 'Merah'),
 (31, 25, 'Kuning'),
-(32, 24, 'Biru'),
-(33, 24, 'Merah'),
-(34, 24, 'Kuning'),
-(35, 24, 'Hijau');
+(38, 24, 'Hitam');
 
 --
 -- Indexes for dumped tables
@@ -466,37 +536,37 @@ ALTER TABLE `tb_warna`
 -- AUTO_INCREMENT for table `tb_chat`
 --
 ALTER TABLE `tb_chat`
-  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_diskon`
 --
 ALTER TABLE `tb_diskon`
-  MODIFY `id_diskon` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_diskon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_dt_diskon`
 --
 ALTER TABLE `tb_dt_diskon`
-  MODIFY `id_dt_diskon` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dt_diskon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_dt_transaksi`
 --
 ALTER TABLE `tb_dt_transaksi`
-  MODIFY `id_dt_transaksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dt_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_gambar`
 --
 ALTER TABLE `tb_gambar`
-  MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tb_get_diskon`
 --
 ALTER TABLE `tb_get_diskon`
-  MODIFY `id_get_diskon` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_get_diskon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_kategori`
@@ -508,7 +578,7 @@ ALTER TABLE `tb_kategori`
 -- AUTO_INCREMENT for table `tb_komentar`
 --
 ALTER TABLE `tb_komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_kupon`
@@ -520,7 +590,7 @@ ALTER TABLE `tb_kupon`
 -- AUTO_INCREMENT for table `tb_pembayaran`
 --
 ALTER TABLE `tb_pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_produk`
@@ -532,37 +602,37 @@ ALTER TABLE `tb_produk`
 -- AUTO_INCREMENT for table `tb_room`
 --
 ALTER TABLE `tb_room`
-  MODIFY `id_room` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_room` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_topup`
 --
 ALTER TABLE `tb_topup`
-  MODIFY `id_topup` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_topup` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_ukuran`
 --
 ALTER TABLE `tb_ukuran`
-  MODIFY `id_ukuran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_ukuran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `tb_warna`
 --
 ALTER TABLE `tb_warna`
-  MODIFY `id_warna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_warna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Constraints for dumped tables

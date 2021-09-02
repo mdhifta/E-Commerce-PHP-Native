@@ -42,8 +42,7 @@ include '../config/config.php';
                   <tr>
                     <th class="text-center">Kode Transaksi</th>
                     <th class="text-center">Total Bayar</th>
-                    <th class="text-center">Bank</th>
-                    <th class="text-center">No Virtual (Pembayaran)</th>
+                    <th class="text-center">Nomor Resi</th>
                     <th class="text-center">Jasa Kirim</th>
                     <th class="text-center">Lama Kirim</th>
                     <th class="text-center">Alamat Kirim</th>
@@ -62,10 +61,7 @@ include '../config/config.php';
                         <span class="money">Rp. <?= number_format($values->total_transaksi); ?>;-</span>
                       </td>
                       <td class="text-right small--hide cart-price">
-                        <span class="money"><?= strtoupper($values->bank); ?></span>
-                      </td>
-                      <td class="text-right small--hide cart-price">
-                        <div><span class="money"><?= $values->no_virtual; ?></span></div>
+                        <div><span class="money"><?= $values->no_resi; ?></span></div>
                       </td>
                       <td class="text-right small--hide cart-price">
                         <div><span class="money"><?= strtoupper($values->jasa_pengiriman); ?></span></div>

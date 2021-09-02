@@ -164,6 +164,12 @@ $user = $query->fetch_object();
                 <p>Pembelian</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="masterOmset.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Omset</p>
+              </a>
+            </li>
           </ul>
         </li>
         <!-- transaksi end -->

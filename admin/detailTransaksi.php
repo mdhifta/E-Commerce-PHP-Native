@@ -31,12 +31,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0"><?= $value->nama_produk; ?></h1>
+              <h1 class="m-0">Detail Transaksi</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active"><?= $value->nama_produk; ?></li>
+                <li class="breadcrumb-item active">Detail Transaksi</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -53,7 +53,7 @@
 
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title"><?= $value->nama_produk; ?> Detail</h3>
+                  <h3 class="card-title">Detail</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -129,10 +129,10 @@
                         <tr>
                           <th scope="row">Nomor Resi </th>
                           <td colspan="5">
-                            <?php if ($value->nomor_resi==null): ?>
+                            <?php if ($value->no_resi==null): ?>
                               <a href="addResi.php?id=<?= $value->id_transaksi; ?>" class="btn btn-primary">Tambah Nomor Resi</a>
                             <?php else: ?>
-                              <h5><?= $value->nomor_resi; ?></h5>
+                              <h5><?= $value->no_resi; ?></h5>
                             <?php endif; ?>
                           </td>
                         </tr>
