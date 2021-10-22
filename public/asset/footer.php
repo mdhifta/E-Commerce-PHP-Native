@@ -15,7 +15,7 @@
             <h4 class="h4">Kontak</h4>
             <ul class="addressFooter">
               <li><i class="icon anm anm-map-marker-al"></i><p>Jl. Magelang, <br>Sleman, DIY</p></li>
-              <li class="phone"><i class="icon anm anm-phone-s"></i><p>(+62) 812 9615 8612</p></li>
+              <li class="phone"><i class="icon anm anm-phone-s"></i><p>(+62) 812 9225 112</p></li>
               <li class="email"><i class="icon anm anm-envelope-l"></i><p>mdhiftaa@gmail.com</p></li>
             </ul>
           </div>
