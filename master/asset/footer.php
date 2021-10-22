@@ -6,8 +6,8 @@
 
 <!-- Main Footer -->
 <footer class="main-footer">
-  <strong>Developed with Love by <a href="https://digisoft.id">Nur Okatvia</a>.</strong>
+  <strong>Developed with Love by <a href="https://digisoft.id">M Dhifta</a>.</strong>
   <div class="float-right d-none d-sm-inline-block">
-    <b>Version</b> 1.0 Lechy
+    <b>Version</b> 1.0 DigiShop Cloth
   </div>
 </footer>

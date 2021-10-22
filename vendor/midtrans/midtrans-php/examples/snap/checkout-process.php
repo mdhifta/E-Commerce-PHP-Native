@@ -6,7 +6,7 @@ include '../../../../../config/config.php';
 require_once dirname(__FILE__) . '/../../Midtrans.php';
 
 //Set Your server key
-Config::$serverKey = "SB-Mid-server-ch4wJ1sT4jkK3xdjugS16In7";
+Config::$serverKey = "server-key";
 
 // Uncomment for production environment
 // Config::$isProduction = true;
@@ -317,7 +317,7 @@ $snapToken = Snap::getSnapToken($transaction);
 </html>
 <!-- end data user input -->
 
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-cplDPO1YZt_pmxoj"></script>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="key-client"></script>
 <script type="text/javascript">
 document.getElementById('pay-button').onclick = function(){
   var resultData = document.getElementById('result-data');

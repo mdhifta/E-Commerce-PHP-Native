@@ -7,7 +7,7 @@
       </div>
       <div class="chat-partner-name">
         <span class="status donot-disturb"></span>
-        <a href="#">Lechy Beutique (admin)</a>
+        <a href="#">DigiShop Cloth (admin)</a>
       </div>
       <div class="chatbox-icons">
         <a href="javascript:void(0);"><i class="fa fa-minus"></i></a>

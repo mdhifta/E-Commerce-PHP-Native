@@ -8,7 +8,7 @@ $user = $query->fetch_object();
   <!-- Brand Logo -->
   <a href="dashboard.php" class="brand-link">
     <img src="../vendor/assets/logo.jpg" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">Lechy Boutique</span>
+    <span class="brand-text font-weight-light">DigiShop Cloth</span>
   </a>
 
   <!-- Sidebar -->
