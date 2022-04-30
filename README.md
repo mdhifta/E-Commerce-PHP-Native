@@ -26,7 +26,7 @@ Frameworks
 
 API :
 - Midtrans
-- KingOngkir
+- RajaOngkir
 
 Available features:
 - Payment Gateway
