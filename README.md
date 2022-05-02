@@ -1,14 +1,14 @@
 # E-Commerce 
 # Payement 
-If you want a database, you can give me Rp. 800,000;-(Indonesian Rupiah)/$56 (US Dollar)
-If you give me Rp. 2.000.000;- (Indonesian Rupiah) /$150 (US Dollar) I will provide the following facilities:
+If you want a database, you can give me Rp. 800,000;-(Indonesian Rupiah) on Bank Transfer / $100 (US Dollar) on Paypal
+If you give me Rp. 2.000.000;- (Indonesian Rupiah) on Bank Transfer / $500 (US Dollar) on Paypal I will provide the following facilities:
 * 3x Revision Changes
 * 1 month warranty
 * Explanation of the application
 
 # Pembayaran
-Jika anda ingin database, anda bisa memberikan saya Rp. 800.000;-(Rupiah Indonesia)/$56 (Dollar US)
-Jika anda memberikan saya Rp. 2.000.000;- (Rupiah Indonesia) /$150 (Dollar US) saya akan memberikan fasilitas :
+Jika anda ingin database, anda bisa memberikan saya Rp. 800.000;-(Rupiah Indonesia) lewat Bank Transfer /$100 (Dollar US) lewat Paypal
+Jika anda memberikan saya Rp. 2.000.000;- (Rupiah Indonesia) lewat Bank Transfer /$500 (Dollar US) lewat Paypal saya akan memberikan fasilitCancel changesas :
 * 3x Revisi Perubahan
 * Garansi 1 Bulan
 * Penjelasan tentang aplikasi
