@@ -10,14 +10,14 @@ if ($_POST['id_room']=='0') {
   if ($mysqli->query("INSERT INTO tb_room(nama_room) VALUES('$fullname')")) {
     $id_room = $mysqli->insert_id;
     if ($mysqli->query("INSERT INTO tb_chat(id_user, id_room, teks) VALUES('$_SESSION[id_costumer]', '$id_room', '$_POST[message]')")) {
-      header('Location:../../index.php');
+      echo "sukses 1";
     } else {
       echo "Error balas pesan";
     }
   }
 } else {
   if ($mysqli->query("INSERT INTO tb_chat(id_user, id_room, teks) VALUES('$_SESSION[id_costumer]', '$_POST[id_room]', '$_POST[message]')")) {
-    header('Location:../../index.php');
+    echo "sukses 2";
   } else {
     echo "Error balas pesan";
   }

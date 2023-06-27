@@ -6,7 +6,7 @@ include '../../../../../config/config.php';
 require_once dirname(__FILE__) . '/../../Midtrans.php';
 
 //Set Your server key
-Config::$serverKey = "server-key";
+Config::$serverKey = "<-server-key->";
 
 // Uncomment for production environment
 // Config::$isProduction = true;
@@ -90,135 +90,141 @@ $snapToken = Snap::getSnapToken($transaction);
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <!-- belle/checkout.html   11 Nov 2019 12:44:33 GMT -->
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Checkout</title>
-  <meta name="description" content="description">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?php include 'asset/css.php'; ?>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Checkout</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php include 'asset/css.php'; ?>
 </head>
+
 <body class="page-template belle">
-  <div class="pageWrapper">
-    <?php include 'asset/topbar.php'; ?>
+    <div class="pageWrapper">
+        <?php include 'asset/topbar.php'; ?>
 
-    <?php include 'asset/navbar.php'; ?>
+        <?php include 'asset/navbar.php'; ?>
 
-    <?php include 'asset/mobile.php'; ?>
+        <?php include 'asset/mobile.php'; ?>
 
-    <!--Body Content-->
-    <div id="page-content">
-      <!--Page Title-->
-      <div class="page section-header text-center">
-        <div class="page-title">
-          <div class="wrapper"><h1 class="page-width">Checkout</h1></div>
-        </div>
-      </div>
-      <!--End Page Title-->
-
-      <div class="container">
-        <div class="row">
-
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
-            <div class="customer-box customer-coupon">
-              <h3 class="font-15 xs-font-13"><i class="anm anm-user-al"></i> please entrie your data</h3>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-          <div class="your-order-payment">
-            <div class="your-order">
-              <h2 class="order-title mb-4">Your Order</h2>
-
-              <div class="table-responsive-sm order-table">
-                <table class="bg-white table table-bordered table-hover text-center">
-                  <thead>
-                    <tr>
-                      <th class="text-left">Product Name</th>
-                      <th>Total</th>
-                      <th>qty</th>
-                      <th>Subtotal</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="text-left">TOP UP SALDO</td>
-                      <td>Rp.<?= number_format($_POST['saldo']); ?>;-</td>
-                      <td>1</td>
-                      <td>Rp.<?= number_format($_POST['saldo']); ?>;-</td>
-                    </tr>
-                  </tbody>
-                  <tfoot class="font-weight-600">
-                    <tr>
-                      <td colspan="3" class="text-right">Total</td>
-                      <td>Rp.<?= number_format($_POST['saldo']); ?>;-</td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-            </div>
-
-            <hr />
-
-            <div class="your-payment">
-              <h2 class="payment-title mb-3">Confirmation</h2>
-              <div class="payment-method">
-
-                <form name="myform" action="add-topup.php" method="post">
-                  <input type="hidden" name="saldo" value="<?= $_POST['saldo']; ?>">
-                  <input type="hidden" name="json" id="json" value="">
-                </form>
-
-                <div class="order-button-payment">
-                  <button class="btn" value="Place order" id="pay-button">Top up</button>
+        <!--Body Content-->
+        <div id="page-content">
+            <!--Page Title-->
+            <div class="page section-header text-center">
+                <div class="page-title">
+                    <div class="wrapper">
+                        <h1 class="page-width">Checkout</h1>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+            <!--End Page Title-->
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                        <div class="customer-box customer-coupon">
+                            <h3 class="font-15 xs-font-13"><i class="anm anm-user-al"></i> please entrie your data</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="your-order-payment">
+                        <div class="your-order">
+                            <h2 class="order-title mb-4">Your Order</h2>
+
+                            <div class="table-responsive-sm order-table">
+                                <table class="bg-white table table-bordered table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">Product Name</th>
+                                            <th>Total</th>
+                                            <th>qty</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-left">TOP UP SALDO</td>
+                                            <td>Rp.<?= number_format($_POST['saldo']); ?>;-</td>
+                                            <td>1</td>
+                                            <td>Rp.<?= number_format($_POST['saldo']); ?>;-</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot class="font-weight-600">
+                                        <tr>
+                                            <td colspan="3" class="text-right">Total</td>
+                                            <td>Rp.<?= number_format($_POST['saldo']); ?>;-</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="your-payment">
+                            <h2 class="payment-title mb-3">Confirmation</h2>
+                            <div class="payment-method">
+
+                                <form name="myform" action="add-topup.php" method="post">
+                                    <input type="hidden" name="saldo" value="<?= $_POST['saldo']; ?>">
+                                    <input type="hidden" name="json" id="json" value="">
+                                </form>
+
+                                <div class="order-button-payment">
+                                    <button class="btn" value="Place order" id="pay-button">Top up</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
     </div>
+    <!--End Body Content-->
 
-  </div>
-  <!--End Body Content-->
+    <?php include 'asset/footer.php'; ?>
+    <!--Scoll Top-->
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+    <!--End Scoll Top-->
 
-  <?php include 'asset/footer.php'; ?>
-  <!--Scoll Top-->
-  <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
-  <!--End Scoll Top-->
-
-  <?php include 'asset/js.php'; ?>
-</div>
+    <?php include 'asset/js.php'; ?>
+    </div>
 </body>
 <!-- belle/checkout.html   11 Nov 2019 12:44:33 GMT -->
+
 </html>
 <!-- end data user input -->
 
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="client-key"></script>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<-client-key->"></script>
 <script type="text/javascript">
-document.getElementById('pay-button').onclick = function(){
-  var resultData = document.getElementById('result-data');
+document.getElementById('pay-button').onclick = function() {
+    var resultData = document.getElementById('result-data');
 
-  // SnapToken acquired from previous step
-  snap.pay('<?php echo $snapToken?>', {
-    // Optional
-    onSuccess: function(result){
-      document.getElementById('json').value = JSON.stringify(result, null, 2);
-      document.myform.submit();
-    },
-    // Optional
-    onPending: function(result){
-      document.getElementById('json').value = JSON.stringify(result, null, 2);
-      document.myform.submit();
-    },
-    // Optional
-    onError: function(result){
-      document.getElementById('json').value = JSON.stringify(result, null, 2);
-      document.myform.submit();
-    }
-  });
+    // SnapToken acquired from previous step
+    snap.pay('<?php echo $snapToken?>', {
+        // Optional
+        onSuccess: function(result) {
+            document.getElementById('json').value = JSON.stringify(result, null, 2);
+            document.myform.submit();
+        },
+        // Optional
+        onPending: function(result) {
+            document.getElementById('json').value = JSON.stringify(result, null, 2);
+            document.myform.submit();
+        },
+        // Optional
+        onError: function(result) {
+            document.getElementById('json').value = JSON.stringify(result, null, 2);
+            document.myform.submit();
+        }
+    });
 };
 </script>
 </body>
+
 </html>

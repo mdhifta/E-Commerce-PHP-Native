@@ -4,6 +4,7 @@
 <?php $room = $query->fetch_object(); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -67,60 +68,67 @@
                 </div>
                 <!-- /.card-header -->
 
-                <div class="card-body">
-                  <!-- Conversations are loaded here -->
-                  <div class="direct-chat-messages">
-                    <?php $chat = $mysqli->query("SELECT tbu.fname, tbu.lname, tbu.roles, tbc.*, tbr.* FROM tb_chat as tbc JOIN tb_room as tbr ON tbr.id_room=tbc.id_room JOIN tb_user as tbu ON tbu.id_user=tbc.id_user WHERE tbc.id_room='$_GET[id]' ORDER BY tbc.id_chat ASC"); ?>
-                    <?php while ($value = $chat->fetch_object()) {
-                      if ($value->roles==1) { ?>
-                        <!-- cosutmer starts -->
-                        <!-- Message. Default to the left -->
-                        <div class="direct-chat-msg">
-                          <div class="direct-chat-infos clearfix">
-                            <span class="direct-chat-name float-left"><?= $value->fname; ?> <?= $value->lname; ?></span>
-                          </div>
-                          <!-- /.direct-chat-infos -->
-                          <img class="direct-chat-img" src="../vendor/assets/user2.png" alt="message user image">
-                          <!-- /.direct-chat-img -->
-                          <div class="direct-chat-text">
-                            <?= $value->teks; ?>
-                          </div>
-                          <!-- /.direct-chat-text -->
-                        </div>
-                        <!-- /.direct-chat-msg -->
-                        <!-- costumer end -->
-                    <?php  } else {  ?>
-                      <!-- admin start -->
-                      <!-- Message to the right -->
-                      <div class="direct-chat-msg right">
-                        <div class="direct-chat-infos clearfix">
-                          <span class="direct-chat-name float-right">Admin (me)</span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img class="direct-chat-img" src="../vendor/assets/user.png" alt="message user image">
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                          <?= $value->teks; ?>
-                        </div>
-                        <!-- /.direct-chat-text -->
-                      </div>
-                      <!-- /.direct-chat-msg -->
-                      <!-- admin end -->
-                    <?php }
-                    } ?>
+                <div>
+                  <div class="card-body">
+                    <!-- Conversations are loaded here -->
+                    <div class="direct-chat-messages">
+                      <?php $chat = $mysqli->query("SELECT tbu.fname, tbu.lname, tbu.roles, tbc.*, tbr.* FROM tb_chat as tbc JOIN tb_room as tbr ON tbr.id_room=tbc.id_room JOIN tb_user as tbu ON tbu.id_user=tbc.id_user WHERE tbc.id_room='$_GET[id]' ORDER BY tbc.id_chat ASC"); ?>
 
+                      <div id="refresh">
+
+
+                        <?php while ($value = $chat->fetch_object()) { ?>
+                          <?php if ($value->roles == 1) { ?>
+                            <!-- cosutmer starts -->
+                            <!-- Message. Default to the left -->
+                            <div class="direct-chat-msg">
+                              <div class="direct-chat-infos clearfix">
+                                <span class="direct-chat-name float-left"><?= $value->fname; ?> <?= $value->lname; ?></span>
+                              </div>
+                              <!-- /.direct-chat-infos -->
+                              <img class="direct-chat-img" src="../vendor/assets/user2.png" alt="message user image">
+                              <!-- /.direct-chat-img -->
+                              <div class="direct-chat-text">
+                                <?= $value->teks; ?>
+                              </div>
+                              <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- /.direct-chat-msg -->
+                            <!-- costumer end -->
+                          <?php  } else {  ?>
+                            <!-- admin start -->
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                              <div class="direct-chat-infos clearfix">
+                                <span class="direct-chat-name float-right">Admin (me)</span>
+                              </div>
+                              <!-- /.direct-chat-infos -->
+                              <img class="direct-chat-img" src="../vendor/assets/user.png" alt="message user image">
+                              <!-- /.direct-chat-img -->
+                              <div class="direct-chat-text">
+                                <?= $value->teks; ?>
+                              </div>
+                              <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- /.direct-chat-msg -->
+                            <!-- admin end -->
+                        <?php }
+                        } ?>
+                      </div>
+                    </div>
+                    <!--/.direct-chat-messages-->
                   </div>
-                  <!--/.direct-chat-messages-->
+
                 </div>
 
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <form action="backend/chat/addChat.php" method="post">
+                  <form>
                     <div class="input-group">
-                      <input type="hidden" name="id_room" value="<?= $_GET['id']; ?>">
-                      <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                      <input type="hidden" id="id_room" name="id_room" value="<?= $_GET['id']; ?>">
+                      <input type="text" id="message" name="message" placeholder="Type Message ..." class="form-control">
                       <span class="input-group-append">
-                        <button class="btn btn-primary">Send</button>
+                        <a onclick="submit()" class="btn btn-primary">Send</a>
                       </span>
                     </div>
                   </form>
@@ -133,7 +141,8 @@
 
           </div>
           <!-- /.row -->
-        </div><!--/. container-fluid -->
+        </div>
+        <!--/. container-fluid -->
       </section>
       <!-- /.content -->
     </div>
@@ -144,5 +153,36 @@
   <!-- ./wrapper -->
 
   <?php include "asset/js.php" ?>
+
+  <script>
+    function loadDiv() {
+      $("#refresh").load(" #refresh");
+    }
+
+    setInterval(function() {
+      loadDiv();
+    }, 1000);
+
+
+    function submit() {
+      var id_room = document.getElementById("id_room").value;
+      var message = document.getElementById("message").value;
+      var form = $('#refresh');
+
+      $.ajax({
+        type: "POST", //type of method
+        url: "backend/chat/addChat.php", //your page
+        data: {
+          id_room: id_room,
+          message: message,
+        }, // passing the values
+        success: function(res) {
+          document.getElementById("message").value = null;
+          loadDiv();
+        }
+      });
+    }
+  </script>
 </body>
+
 </html>

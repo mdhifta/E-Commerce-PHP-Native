@@ -1,5 +1,3 @@
-<?php include 'chat.php'; ?>
-
 <!--Footer-->
 <footer id="footer">
   <div class="site-footer">
@@ -14,9 +12,15 @@
           <div class="col-12 col-sm-12 col-md-3 col-lg-4 contact-box">
             <h4 class="h4">Kontak</h4>
             <ul class="addressFooter">
-              <li><i class="icon anm anm-map-marker-al"></i><p>Jl. Magelang, <br>Sleman, DIY</p></li>
-              <li class="phone"><i class="icon anm anm-phone-s"></i><p>(+62) 812 9225 112</p></li>
-              <li class="email"><i class="icon anm anm-envelope-l"></i><p>mdhiftaa@gmail.com</p></li>
+              <li><i class="icon anm anm-map-marker-al"></i>
+                <p>Jl. Pancamarga No. 335 Jatirejo, RT.03/RW.21, Jatirejo, Sendangadi, Kec. Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55285</p>
+              </li>
+              <li class="phone"><i class="icon anm anm-phone-s"></i>
+                <p>(+62) 812 9225 112</p>
+              </li>
+              <li class="email"><i class="icon anm anm-envelope-l"></i>
+                <p>mdhiftaa@gmail.com</p>
+              </li>
             </ul>
           </div>
         </div>
@@ -34,3 +38,7 @@
   </div>
 </footer>
 <!--End Footer-->
+
+<div class="chatshow">
+  <?php include 'chat.php'; ?>
+</div>

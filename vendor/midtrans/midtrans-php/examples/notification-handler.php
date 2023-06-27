@@ -5,7 +5,7 @@ include '../../../../config/config.php';
 
 require_once dirname(__FILE__) . '/../Midtrans.php';
 Config::$isProduction = false;
-Config::$serverKey = 'server-key';
+Config::$serverKey = 'SB-Mid-server-Eo2bUnoXZ9bOuKtEHfmFywID';
 $notif = new Notification();
 
 $transaction = $notif->transaction_status;

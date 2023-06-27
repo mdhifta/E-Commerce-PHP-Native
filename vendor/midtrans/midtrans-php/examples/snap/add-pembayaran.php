@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 include '../../../../../config/config.php';
 
 $result = json_decode($_POST['json']);

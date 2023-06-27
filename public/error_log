@@ -1,6 +1,0 @@
-[23-Aug-2021 22:13:58 Asia/Jakarta] PHP Warning:  mysqli::mysqli(): (HY000/1045): Access denied for user 'mdhifta'@'localhost' (using password: YES) in /home/lecm6773/public_html/LechyProject/config/config.php on line 3
-[23-Aug-2021 22:13:58 Asia/Jakarta] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/lecm6773/public_html/LechyProject/public/asset/navbar.php on line 33
-[23-Aug-2021 22:13:58 Asia/Jakarta] PHP Fatal error:  Call to a member function fetch_object() on null in /home/lecm6773/public_html/LechyProject/public/asset/navbar.php on line 34
-[23-Aug-2021 22:13:58 Asia/Jakarta] PHP Warning:  mysqli::mysqli(): (HY000/1045): Access denied for user 'mdhifta'@'localhost' (using password: YES) in /home/lecm6773/public_html/LechyProject/config/config.php on line 3
-[23-Aug-2021 22:13:58 Asia/Jakarta] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/lecm6773/public_html/LechyProject/public/asset/navbar.php on line 33
-[23-Aug-2021 22:13:58 Asia/Jakarta] PHP Fatal error:  Call to a member function fetch_object() on null in /home/lecm6773/public_html/LechyProject/public/asset/navbar.php on line 34
