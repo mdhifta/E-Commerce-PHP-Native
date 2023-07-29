@@ -37,7 +37,12 @@ if ($transaction == 'capture') {
       $getProduk = $mysqli->query("SELECT * FROM tb_dt_transaksi WHERE id_transaksi='$get_id->transaksi'");
 
       while ($values = $getProduk->fetch_object()) {
-        $mysqli->query("UPDATE tb_produk SET stok=stok-$values->banyak WHERE id_produk='$values->id_produk'");
+        // get data produk
+        $prod = $mysqli->query("SELECT * FROM tb_produk WHERE id_produk='$values->id_produk'")->fetch_object();
+        $restock = $prod->stok-$values->banyak;
+        
+        // update stock
+        $mysqli->query("UPDATE tb_produk SET stok='$restock' WHERE id_produk='$values->id_produk'");
       }
 
       echo "Sukses Transaksi";
