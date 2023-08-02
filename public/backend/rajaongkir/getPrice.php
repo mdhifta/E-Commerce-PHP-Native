@@ -36,13 +36,13 @@ $_SESSION['getCity'] = $data['rajaongkir']['destination_details']['city_name'];
 
 <?php
 for ($k=0; $k < count($data['rajaongkir']['results']); $k++) { ?>
-  <option value="">-- Pilih Jenis Paket --</option>
-  <?php for ($l=0; $l < count($data['rajaongkir']['results'][$k]['costs']); $l++) {
+<option value="">-- Pilih Jenis Paket --</option>
+<?php for ($l=0; $l < count($data['rajaongkir']['results'][$k]['costs']); $l++) {
     $service = $data['rajaongkir']['results'][$k]['costs'][$l]['service'];
     $description = $data['rajaongkir']['results'][$k]['costs'][$l]['description'];
     $etd = $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['etd'];
     $value = number_format($data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value']);
     ?>
-    <option value="<?= $etd; ?>|<?= $value; ?>"><?= $service; ?>(Rp. <?= $value; ?>)-(<?= $etd ?> HARI)</option>
-  <?php } ?>
+<option value="<?= $etd; ?>|<?= $value; ?>"><?= $service; ?>(Rp. <?= $value; ?>)-(<?= $etd ?> HARI)</option>
+<?php } ?>
 <?php } ?>

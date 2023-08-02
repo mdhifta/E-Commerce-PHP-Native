@@ -1,5 +1,5 @@
 <?php
 
-$mysqli = new mysqli('localhost', 'digisoft_master', 'uDa9,SuCu&j+', 'digisoft_ecommerce');
+$mysqli = new mysqli('localhost', 'username', 'password', 'db-name');
 
  ?>

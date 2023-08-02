@@ -6,7 +6,7 @@ include '../../../../../config/config.php';
 require_once dirname(__FILE__) . '/../../Midtrans.php';
 
 //Set Your server key
-Config::$serverKey = "<-server-key->";
+Config::$serverKey = "your-key";
 
 // Uncomment for production environment
 // Config::$isProduction = true;
@@ -95,7 +95,7 @@ foreach($_SESSION['mycart'] as $id_produk => $jumlah){
   $data_item[] = $item2_details;
 }
 
-#add data to array
+# add data to array
 array_push($data_item, $item1_details);
 
 if (!isset($_GET['kupon'])) {
@@ -325,7 +325,7 @@ $snapToken = Snap::getSnapToken($transaction);
 </html>
 <!-- end data user input -->
 
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<-client-key->"></script>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="your-key"></script>
 <script type="text/javascript">
 document.getElementById('pay-button').onclick = function() {
     var resultData = document.getElementById('result-data');

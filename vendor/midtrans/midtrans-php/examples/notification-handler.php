@@ -5,7 +5,7 @@ include '../../../../config/config.php';
 
 require_once dirname(__FILE__) . '/../Midtrans.php';
 Config::$isProduction = false;
-Config::$serverKey = '<your-key>';
+Config::$serverKey = 'SB-Mid-server--Ps_1b3PID1HUmSZw9dxJjh5';
 $notif = new Notification();
 
 $transaction = $notif->transaction_status;
@@ -33,13 +33,16 @@ if ($transaction == 'capture') {
 
   if ($verify==1) {
     $get_id = $verify_transaksi->fetch_object();
-    if ($mysqli->query("UPDATE tb_pembayaran SET status='1' WHERE id_transaksi='$get_id->id_transaksi'")) {
-      $getProduk = $mysqli->query("SELECT * FROM tb_dt_transaksi WHERE id_transaksi='$get_id->transaksi'");
+    $transaksi_id = $get_id->id_transaksi;
+
+    if ($mysqli->query("UPDATE tb_pembayaran SET status='1' WHERE id_transaksi='$transaksi_id'")) {
+      $getProduk = $mysqli->query("SELECT * FROM tb_dt_transaksi WHERE id_transaksi='$transaksi_id'");
 
       while ($values = $getProduk->fetch_object()) {
         // get data produk
         $prod = $mysqli->query("SELECT * FROM tb_produk WHERE id_produk='$values->id_produk'")->fetch_object();
         $restock = $prod->stok-$values->banyak;
+        echo $restock;
         
         // update stock
         $mysqli->query("UPDATE tb_produk SET stok='$restock' WHERE id_produk='$values->id_produk'");

@@ -28,5 +28,5 @@ $_SESSION['province'] = $city['rajaongkir']['results'][1]['province'];
 ?>
 
 <?php foreach ($city['rajaongkir']['results'] as $values) { ?>
-  <option value="<?= $values['city_id'] ?>"><?= $values['city_name']; ?></option>
+<option value="<?= $values['city_id'] ?>"><?= $values['city_name']; ?></option>
 <?php } ?>
