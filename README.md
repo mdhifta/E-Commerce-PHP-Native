@@ -5,6 +5,18 @@ Hello, I am making an application about online sales/E-Commerce, this applicatio
 # Donations
 If you want a database, you can make any donations or contributions by submitting an application to the contact listed.
 
+Link Demo App : https://digisoft.id/ecommerce/
+Link Demo Admin : https://digisoft.id/ecommerce/admin/
+
+Account Admin : 
+* admin super
+username : digisoft@gmail.com
+password : 123456
+
+* admin owner
+username : myadmin@gmail.com
+password : 123456
+-----------------------------------------------------------------------------------------------------------------------
 Programming Language:
 - PHP
 - Javascript
