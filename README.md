@@ -9,13 +9,14 @@ Link Demo App : https://digisoft.id/ecommerce/
 Link Demo Admin : https://digisoft.id/ecommerce/admin/
 
 Account Admin : 
-* admin super
-username : digisoft@gmail.com
-password : 123456
 
-* admin owner
-username : myadmin@gmail.com
-password : 123456
+admin super
+- username : digisoft@gmail.com
+- password : 123456
+
+admin owner
+- username : myadmin@gmail.com
+- password : 123456
 -----------------------------------------------------------------------------------------------------------------------
 Programming Language:
 - PHP
