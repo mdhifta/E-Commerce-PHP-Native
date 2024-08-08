@@ -66,7 +66,7 @@ if (!isset($_GET['kupon'])) {
   if ($_POST['kupon']!='null') {
     $item3_details = array(
       'id' => '0001',
-      'price' => -$total_order,
+      'price' => -$potongan,
       'quantity' => 1,
       'name' => "Potongan"
     );
