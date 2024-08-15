@@ -1,4 +1,4 @@
-# English 
+# Description 
 
 Hello, I am making an application about online sales/E-Commerce, this application is made using native php and MySQL, some of the APIs used are Midtrans for payments and also RajaOngkir to find shipping addresses by region. If you are interested, please email to mdhiftaa@gmail.com, telegram https://t.me/Enang55 or whatsapp https://wa.me/6285791419625 to get the database.
 
